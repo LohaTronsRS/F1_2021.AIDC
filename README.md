@@ -9,7 +9,7 @@ The tool will gather fastest AI and Player times of a OSQ Session, and generate 
 * Average of Top 3 Players times 
 * Average of Top 10 Players times
 * Average of All Players times
-* 
+
 These times will be compared against AI's top average finish for a specified difficulty
 
 ## Basic usage:
