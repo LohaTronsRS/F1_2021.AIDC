@@ -1,6 +1,7 @@
 from socket import *
 from struct import *
 from statistics import mean
+from math import floor
 from itertools import zip_longest
 from enum import IntFlag
 from os import system
@@ -88,14 +89,14 @@ while True:
                 mean(PB_List[:10]),\
                 mean(PB_List),\
                 0 if 0 in PB_Sector else sum(PB_Sector)
-            print(*[f'{Value / (1000 * 60):>1.0f}:{(Value / 1000) % 60:>06.3f}' for Value in PB_List[:10]])
+            print(*[f'{floor(Value / (1000 * 60)):>1d}:{(Value / 1000) % 60:>06.3f}' for Value in PB_List[:10]])
             print(*[f'{(Value / 1000) % 60:>06.3f}' for Value in PB_Sector])
             print(f'Personal :'
-                  f'{SOB / (1000 * 60):>6.0f}:{(SOB / 1000) % 60:>06.3f}'
-                  f'|{PB_Time / (1000 * 60):>1.0f}:{(PB_Time / 1000) % 60:>06.3f}'
-                  f'|{PB3_Time / (1000 * 60):>1.0f}:{(PB3_Time / 1000) % 60:>06.3f}'
-                  f'|{PB10_Time / (1000 * 60):>1.0f}:{(PB10_Time / 1000) % 60:>06.3f}'
-                  f'|{AVG / (1000 * 60):>1.0f}:{(AVG / 1000) % 60:>06.3f}')
+                  f'{floor(SOB / (1000 * 60)):>6d}:{(SOB / 1000) % 60:>06.3f}'
+                  f'|{floor(PB_Time / (1000 * 60)):>1d}:{(PB_Time / 1000) % 60:>06.3f}'
+                  f'|{floor(PB3_Time / (1000 * 60)):>1d}:{(PB3_Time / 1000) % 60:>06.3f}'
+                  f'|{floor(PB10_Time / (1000 * 60)):>1d}:{(PB10_Time / 1000) % 60:>06.3f}'
+                  f'|{floor(AVG / (1000 * 60)):>1d}:{(AVG / 1000) % 60:>06.3f}')
             print('-' * 60)
             print(f'{"AI":^4s}{"Time":^10s}{"SoB":>7s}{"PB":>9s}{"AVG-T3":>11s}{"AVG-T10":>9s}{"AVG":>7s}')
 
@@ -112,7 +113,7 @@ while True:
                     AI_Times.update(
                         {Difficulty: {'Time': [Time] if Generated else CurrentTime, 'Generated': Generated}})
                     print(f'{"*" + str(Difficulty) if Generated else Difficulty:^4}'
-                          f'{Time / (1000 * 60):>2.0f}:{(Time / 1000) % 60:06.3f}'
+                          f'{floor(Time / (1000 * 60)):>2d}:{(Time / 1000) % 60:06.3f}'
                           f'{(SOB - Time) / 1000:>+10.3f}'
                           f'{(PB_Time - Time) / 1000:>+9.3f}'
                           f'{(PB3_Time - Time) / 1000:>+9.3f}'
